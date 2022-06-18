@@ -57,11 +57,15 @@ for index in range(0, len(movies)):
     list.append(data)
  
 # printing movie details with its rating.
-for movie in list:
-    print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
-        ') -', 'Starring:', movie['star_cast'], movie['rating'])
+# for movie in list:
+#     print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
+#         ') -', 'Starring:', movie['star_cast'], movie['rating'])
  
  
-##.......##
+# ##.......##
 df = pd.DataFrame(list)
 df.to_csv('imdb_top_250_movies.csv',index=False)
+
+
+df = pd.read_csv('./movie_results.csv')
+print(df.head(10))

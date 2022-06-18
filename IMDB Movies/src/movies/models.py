@@ -33,7 +33,6 @@ engine = create_engine(
 
 class Movie(Base):
     __tablename__ = "movies"
-
     movie_id = Column(Integer, primary_key=True)
     preference_key = Column(Integer)
     movie_title = Column(String)
@@ -41,6 +40,11 @@ class Movie(Base):
     year = Column(Integer)
     create_time = Column(TIMESTAMP(timezone=True), index=True)
 
+class User():
+    __tablename__ = 'users'
+    user_id = Column(Integer, primary_key=True)
+    user_name = Column(String)
+    password = Column(Integer)
 
 def start_mappers():
     Base.metadata.create_all(engine)
