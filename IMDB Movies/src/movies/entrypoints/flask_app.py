@@ -10,7 +10,7 @@ from movie_fetcher import session
 
 app = Flask(__name__)
 models.start_mappers()
-
+app.run(debug=True)
 # !The Open Closed Principle:
 # Tener distintas rutas nos ayuda a probar los elementos agregados sin que se empalmen unos con otros
 
@@ -25,12 +25,14 @@ def fin():
     Obj1 = session.query(models.Movie).all()
     return render_template('add_user.html', Obj1 = Obj1)
 
-# @app.route("/post_user", methods=["POST"])
-# def post_user():
-#     user = models.Movie(request.form['preference_key'], request.form['movie_title'])
-#     session.add(user)
-#     session.commit()
-#     return redirect(url_for(fin))
+@app.route("/post_user", methods=["POST"])
+def post_user():
+    user = models.User(request.form['user_id'], request.form['user_name'])
+    session.add(user)
+    session.commit()
+    return redirect(url_for(fin))
+
+
 
 
 
