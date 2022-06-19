@@ -13,4 +13,4 @@ Para correr el proyecto ejecuta \
 `docker-compose –-env-file config/dev.env up`
 
 Para acceder en el navegador utiliza \
-`http://localhost:5005/hello](http://localhost:5005/hello`
+`http://localhost:5005/sign_up`
