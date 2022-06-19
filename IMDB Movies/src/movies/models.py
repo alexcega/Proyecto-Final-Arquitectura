@@ -50,6 +50,7 @@ class User():
     user_id = Column(Integer, primary_key=True)
     user_name = Column(String)
     password = Column(Integer)
-    
+
+
 def start_mappers():
     Base.metadata.create_all(engine)
