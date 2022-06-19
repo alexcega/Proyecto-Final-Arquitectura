@@ -4,6 +4,7 @@ import csv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from bs4 import BeautifulSoup
+
 from movies.models import get_postgres_uri
 
 DEFAULT_SESSION_FACTORY = sessionmaker(
@@ -12,11 +13,12 @@ DEFAULT_SESSION_FACTORY = sessionmaker(
         isolation_level="REPEATABLE READ",
     )
 )
+#! Singleton
+# Nos permite referenciar a la clase desde un solo punto
 session = DEFAULT_SESSION_FACTORY()
 
 
 def main():
-    print('##$Entramos')
     # Downloading imdb top 250 movie's data
     url = 'http://www.imdb.com/chart/top'
     response = requests.get(url)
@@ -59,19 +61,6 @@ def main():
         writer.writeheader()
         for movie in list:
             writer.writerow({**movie})
-    # recomended_movies = []
-    # for x in list:
-    #     if x['preference_key'] == 1 :
-    #         for k,v in x.items():
-    #             print(v, end=' ')
-    #         print()
-    # print(list[0])
-    # print(type(list[0]))
-    # print(list[0]['preference_key'])
-    # print(type(list[0]['preference_key']))
-    # if list[0]['preference_key'] == 1 :
-    #     print(list[0])
-
 
 if __name__ == '__main__':
     main()

@@ -1,24 +1,38 @@
-from flask import Flask, render_template, request
+from distutils.log import debug
+# from tkinter.tix import Select
+from flask import Flask, request, render_template, redirect, url_for
 from movies import models
-from movies import movie_fetcher
-import pandas as pd
+from movie_fetcher import session
+# import pandas as pd
+
+
+
+
 app = Flask(__name__)
 models.start_mappers()
 
+# !The Open Closed Principle:
+# Tener distintas rutas nos ayuda a probar los elementos agregados sin que se empalmen unos con otros
 
 # @app.route("/hello", methods=["GET"])
 # def hello_world():
-#     return "Hello mundo!", 200
+#     return "Hello World!", 200
+
+@app.route("/fin")
+def fin():
+    # !The Interface Segregation Principle
+    # Se renderiza en la pantalla solo la informacion necesaria
+    Obj1 = session.query(models.Movie).all()
+    return render_template('add_user.html', Obj1 = Obj1)
+
+# @app.route("/post_user", methods=["POST"])
+# def post_user():
+#     user = models.Movie(request.form['preference_key'], request.form['movie_title'])
+#     session.add(user)
+#     session.commit()
+#     return redirect(url_for(fin))
 
 
-@app.route("/login")
-def myLogin():
-    return render_template("login.html")
 
 
-@app.route("/recomendation")
-def myRecomended():
-    df = pd.read_csv('./movie_results.csv')
-    ans = df.head()
-    return "hola", 200
-
+    

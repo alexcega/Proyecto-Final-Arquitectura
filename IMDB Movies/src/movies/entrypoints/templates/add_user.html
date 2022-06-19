@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <form method="post" action="/post_user">
+      <label>Username:</label>
+      <input id="username" name="username" type="text" />
+      <label>Email:</label>
+      <input id="email" name="email" type="text" />
+      <input type="submit" />
+    </form>
+
+    <!-- {{Obj1}} -->
+    {% for x in Obj1 %}
+      <li>{{x.movie_id}} | {{x.preference_key}} | {{x.movie_title}} | {{x.rating}} | {{x.year}} | {{x.create_time}}</li>
+    {% endfor %}
+  </body>
+</html>
