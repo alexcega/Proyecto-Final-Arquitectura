@@ -18,6 +18,8 @@ app.run(debug=True)
 # def hello_world():
 #     return "Hello World!", 200
 
+
+#* Sign up view y seleccion de categorias
 @app.route("/sign_up", methods = ['GEt','POST'])
 def mySignUp():
     global magic_number, username
@@ -26,8 +28,7 @@ def mySignUp():
         cat1  = int(request.form['first'])
         cat2  = int(request.form['second'])
         cat3  = int(request.form['tres'])
-        magic_number = ( (cat1 * cat2 * cat3) % 5 )+1
-        # return f'<h1>{magic_number}</h1>'
+        magic_number = ( (cat1 * cat2 * cat3) % 5 ) +1
         return redirect(url_for('myProfile'))
     return render_template("sign_up.html")
 
@@ -53,15 +54,18 @@ def startUser():
         password = request.form['password']
     return render_template('login.html')
 
+#* Seleccion de visualizacion asc o desc
 @app.route('/profile',methods = ['GEt','POST'])
 def myProfile():
     global orden
+    print('numero', magic_number)
     g.username = username
     if request.method == 'POST':
         orden = request.form['orden']
         return redirect(url_for('recomendation'))
     return render_template('profile.html')
 
+#* 10 recomendaciones
 @app.route("/recomendation")
 def recomendation():  
     df = pd.read_csv('/src/movies/entrypoints/movie_results.csv')
