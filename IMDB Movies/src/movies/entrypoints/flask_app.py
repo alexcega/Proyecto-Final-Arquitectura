@@ -8,7 +8,8 @@ from movie_fetcher import session
 import pandas as pd
 
 
-
+desc = False
+magic_number = 1
 
 app = Flask(__name__)
 models.start_mappers()
@@ -49,8 +50,10 @@ def myProfile():
 @app.route("/recom")
 def recomendation():  
     df = pd.read_csv('/src/movies/entrypoints/movie_results.csv')
-    df=  df.head(10)
-    return(df.to_html(), 200)
+    movie = df[df['preference_key'] == 1]
+    movie = movie.head(10)
+    # movie = movie.tail(10)
+    return(movie.to_html(), 200)
 
 
 
