@@ -11,14 +11,15 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base
 
-# !Responsibility-Driven Design
-# Nos permite ser mas flexibles por si necesitamos cambiar la DB
+#! Singleton
+# Nos permite referenciar a la clase desde un solo punto
 def get_postgres_uri():
     host = os.environ.get("DB_HOST", "postgres")
     port = 5432
     password = os.environ.get("DB_PASS", "abc123")
     user, db_name = "movies", "movies"
     return f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
+
 
 Base = declarative_base(
     metadata=MetaData(),
@@ -32,6 +33,9 @@ engine = create_engine(
 
 # !Directional Control
 # La creacion de la base de datos se crea a partir de la metadata que recibe
+
+#! Builder
+#La clase nos permite crear un objeto con multiples atributos en pocos pasos
 
 # Le agregue star cast
 class Movie(Base):

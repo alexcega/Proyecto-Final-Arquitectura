@@ -14,3 +14,6 @@ Para correr el proyecto ejecuta \
 
 Para acceder en el navegador utiliza \
 `http://localhost:5005/sign_up`
+
+Liga drive:
+https://docs.google.com/document/d/1o3HOXzHjRMwPZHB6gkaje5wHri0JDPmhHu3QHeow7hg/edit

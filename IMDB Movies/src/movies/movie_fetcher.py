@@ -13,8 +13,7 @@ DEFAULT_SESSION_FACTORY = sessionmaker(
         isolation_level="REPEATABLE READ",
     )
 )
-#! Singleton
-# Nos permite referenciar a la clase desde un solo punto
+
 session = DEFAULT_SESSION_FACTORY()
 
 

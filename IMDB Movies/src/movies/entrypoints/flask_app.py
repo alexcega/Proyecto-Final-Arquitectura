@@ -11,14 +11,10 @@ username = None
 app = Flask(__name__)
 models.start_mappers()
 app.run(debug=True)
+
+
 # !The Open Closed Principle:
 # Tener distintas rutas nos ayuda a probar los elementos agregados sin que se empalmen unos con otros
-
-# @app.route("/hello", methods=["GET"])
-# def hello_world():
-#     return "Hello World!", 200
-
-
 #* Sign up view y seleccion de categorias
 @app.route("/sign_up", methods = ['GEt','POST'])
 def mySignUp():
